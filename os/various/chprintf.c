@@ -83,7 +83,9 @@ static char *ltoa(char *p, long num, unsigned radix) {
  * @param[in] chp       pointer to a @p BaseChannel implementing object
  * @param[in] fmt       formatting string
  */
+BSEMAPHORE_DECL(chprintfsem, 0);
 void chprintf(BaseChannel *chp, const char *fmt, ...) {
+  chBSemWait(&chprintfsem);
   va_list ap;
   char tmpbuf[MAX_FILLER + 1];
   char *p, *s, c, filler;
@@ -96,6 +98,7 @@ void chprintf(BaseChannel *chp, const char *fmt, ...) {
     c = *fmt++;
     if (c == 0) {
       va_end(ap);
+      chBSemSignal(&chprintfsem);
       return;
     }
     if (c != '%') {
@@ -219,6 +222,7 @@ unsigned_common:
       width--;
     }
   }
+  chBSemSignal(&chprintfsem);
 }
 
 /** @} */
