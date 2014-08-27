@@ -268,9 +268,10 @@ char *dbg_panic_msg;
  *
  * @param[in] msg       the pointer to the panic message string
  */
+extern void myDbgPanicMsg(char *m);
 void chDbgPanic(char *msg) {
-
   dbg_panic_msg = msg;
+  myDbgPanicMsg(dbg_panic_msg);
   chSysHalt();
 }
 #endif /* CH_DBG_ENABLED */
