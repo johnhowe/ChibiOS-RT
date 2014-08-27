@@ -84,6 +84,11 @@ static char *ltoa(char *p, long num, unsigned radix) {
  * @param[in] chp       pointer to a @p BaseChannel implementing object
  * @param[in] fmt       formatting string
  */
+void noprintf(BaseChannel *chp, const char *fmt, ...) {
+    (void) chp;
+    (void) fmt;
+}
+
 static MUTEX_DECL(sd4Mtx);
 static MUTEX_DECL(sd6Mtx);
 void chprintf(BaseChannel *chp, const char *fmt, ...) {

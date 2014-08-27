@@ -39,7 +39,8 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-  void chprintf(BaseChannel *chp, const char *fmt, ...);
+    void noprintf(BaseChannel *chp, const char *fmt, ...);
+    void chprintf(BaseChannel *chp, const char *fmt, ...);
 #ifdef __cplusplus
 }
 #endif
