@@ -194,9 +194,12 @@ extern ch_trace_buffer_t dbg_trace_buffer;
  * @api
  */
 #if !defined(chDbgAssert)
-#define chDbgAssert(c, m, r) {                                          \
-  if (!(c))                                                             \
-    chDbgPanic(m);                                                      \
+extern void myAssertRemark(char *r);
+#define chDbgAssert(c, m, r) {                                       \
+  if (!(c))   {                                                      \
+    myAssertRemark(r);                                               \
+    chDbgPanic(m);                                                   \
+  }                                                                  \
 }
 #endif /* !defined(chDbgAssert) */
 /** @} */
