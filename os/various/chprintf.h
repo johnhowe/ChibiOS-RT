@@ -39,6 +39,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+    char *ltoa(char *p, long num, unsigned radix);
     void noprintf(BaseChannel *chp, const char *fmt, ...);
     void chprintf(BaseChannel *chp, const char *fmt, ...);
 #ifdef __cplusplus

@@ -40,7 +40,7 @@
 
 #define MAX_FILLER 11
 
-static char *ltoa(char *p, long num, unsigned radix) {
+char *ltoa(char *p, long num, unsigned radix) {
     int i;
     char *q;
 
